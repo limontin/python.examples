@@ -1,0 +1,13 @@
+# program to read through the mbox-short.txt and figure out who has sent the greatest number of mail messages.
+
+name = input("Enter file:")
+if len(name) < 1 : name = "mbox-short.txt"
+handle = open(name)
+
+palabras = dict()
+
+for line in handle:
+
+    if not line.startswith("From ") : continue
+    words = line.rstrip().split()
+    palabras[words[1]] = palabras.get(words[1],0) + 1
